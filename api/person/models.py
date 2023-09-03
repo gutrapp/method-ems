@@ -65,11 +65,11 @@ class Address(models.Model):
     SUDESTE = "SE"
     NORDESTE = "NE"
     REGION_CHOICES = [
-        (SUL, "Sul")
-        (NORTE, "Norte")
-        (CENTRO_OESTE, "Centro-Oeste")
-        (SUDESTE, "Sudeste")
-        (NORDESTE, "Nordeste")
+        (SUL, "Sul"),
+        (NORTE, "Norte"),
+        (CENTRO_OESTE, "Centro-Oeste"),
+        (SUDESTE, "Sudeste"),
+        (NORDESTE, "Nordeste"),
     ]
 
     cep = models.CharField(max_length=8)
@@ -85,8 +85,8 @@ class Cellphone(models.Model):
     FIXED = "FX"
     MOBILE = "MO"
     TYPE_CHOICES = [
-        (FIXED, "Fixo")
-        (MOBILE, "Celular")
+        (FIXED, "Fixo"),
+        (MOBILE, "Celular"),
     ] 
 
 
@@ -99,8 +99,8 @@ class Person(models.Model):
     MALE = "M"
     FEMALE = "F"
     SEX_CHOICES = [
-        (MALE, "Masculino")
-        (FEMALE, "Feminino")
+        (MALE, "Masculino"),
+        (FEMALE, "Feminino"),
     ]
     
     first_name = models.CharField(max_length=20)
@@ -109,5 +109,6 @@ class Person(models.Model):
     cpf = models.CharField(max_length=12, unique=True)
     age = models.IntegerField()
     sex = models.CharField(max_length=2, choices=SEX_CHOICES)
-    address = models.ManyToManyField(Address, on_delete=models.SET_NULL)
-    cellphone = models.ManyToManyField(Cellphone, on_delete=models.SET_NULL)
+    password = models.CharField(max_length=255)
+    address = models.ManyToManyField(Address)
+    cellphone = models.ManyToManyField(Cellphone)

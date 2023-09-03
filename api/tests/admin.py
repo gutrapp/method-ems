@@ -1,3 +1,9 @@
 from django.contrib import admin
 
-# Register your models here.
+from .models import Life, SelfKnowledge, Mbti, LoveLanguage
+
+
+admin.site.register(Life)
+admin.site.register(SelfKnowledge)
+admin.site.register(Mbti)
+admin.site.register(LoveLanguage)

@@ -5,7 +5,7 @@ from result.models import Result
 
 class Life(models.Model):
     average = models.DecimalField(max_digits=5, decimal_places=2)
-    total = models.IntegerField
+    total = models.IntegerField()
     result = models.OneToOneField(Result, on_delete=models.CASCADE)
 
 

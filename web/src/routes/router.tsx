@@ -1,10 +1,10 @@
-import { JSX } from "solid-js";
+import { JSXElement } from "solid-js";
 import Home from "../pages/Home";
 import Login from "../pages/Login";
 
 type Route = {
   path: string;
-  element: JSX.Element;
+  element: JSXElement;
 };
 
 export const PRIVATE_ROUTES: Route[] = [
