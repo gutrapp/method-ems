@@ -3,7 +3,7 @@ Front-End
 
 ---
 
-
+Private Routes:
 [] Admin
 	[] Global
   	[] Dashboard
@@ -21,7 +21,10 @@ Front-End
 			[] Person
 				[] Person (id)
 
+
+Public Routes:
 [X] Home
+
 [X] Login
 
 [] Dashboard

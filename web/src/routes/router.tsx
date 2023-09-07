@@ -1,0 +1,31 @@
+export const PUBLIC_ROUTES = [
+  { path: "/", element: <></> },
+  { path: "/login", element: <></> },
+  { path: "/admin", element: <></> },
+  { path: "/dashboard", element: <></> },
+  { path: "/dashboard/profile", element: <></> },
+  { path: "/dashboard/test", element: <></> },
+  { path: "/dashboard/test/:id", element: <></> },
+  { path: "/tests", element: <></> },
+  { path: "/tests/mbti", element: <></> },
+  { path: "/tests/life", element: <></> },
+  { path: "/tests/selfknowledge", element: <></> },
+  { path: "/tests/lovelanguage", element: <></> },
+];
+
+export const PRIVATE_ROUTES = [
+  { path: "/admin/global", element: <></> },
+  { path: "/admin/global/dashboard", element: <></> },
+  { path: "/admin/global/dashboard/test", element: <></> },
+  { path: "/admin/global/dashboard/person", element: <></> },
+  { path: "/admin/global/dashboard/clinic", element: <></> },
+  { path: "/admin/global/dashboard/test/:id", element: <></> },
+  { path: "/admin/global/dashboard/person/:id", element: <></> },
+  { path: "/admin/global/dashboard/clinic/:id", element: <></> },
+  { path: "/admin/clinic", element: <></> },
+  { path: "/admin/clinic/:id/dashboard", element: <></> },
+  { path: "/admin/clinic/:id/dashboard/test", element: <></> },
+  { path: "/admin/clinic/:id/dashboard/person", element: <></> },
+  { path: "/admin/clinic/:id/dashboard/test/:test_id", element: <></> },
+  { path: "/admin/clinic/:id/dashboard/person/:person_id", element: <></> },
+];
