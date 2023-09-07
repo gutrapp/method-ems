@@ -1,26 +1,24 @@
-import { JSXElement, createContext, createSignal } from "solid-js";
+import React, { createContext, useState } from "react";
 import { Person } from "../models/Person/type";
 
-const personInitialState: Person = {
+type PersonContextProviderProps = {
+  children: React.ReactNode;
+};
+
+export const personInitialState: Person = {
   id: 0,
   first_name: "",
   last_name: "",
   email: "",
-  age: 0,
   cpf: "",
+  age: 0,
   sex: "M",
 };
 
-type PersonContextProps = {
+export const PersonContext = createContext<{
   person: Person;
-  setPerson: (person: Person) => void;
-};
-
-type PersonContextProviderProps = {
-  children: JSXElement;
-};
-
-export const PersonContext = createContext<PersonContextProps>({
+  setPerson: React.Dispatch<React.SetStateAction<Person>>;
+}>({
   person: personInitialState,
   setPerson: () => {},
 });
@@ -28,15 +26,11 @@ export const PersonContext = createContext<PersonContextProps>({
 export const PersonContextProvider = ({
   children,
 }: PersonContextProviderProps) => {
-  const [person, setPerson] = createSignal<Person>(personInitialState);
-  const context = {
-    person: person(),
-    setPerson(person: Person) {
-      setPerson(person);
-    },
-  };
+  const [person, setPerson] = useState<Person>(personInitialState);
 
   return (
-    <PersonContext.Provider value={context}>{children}</PersonContext.Provider>
+    <PersonContext.Provider value={{ person, setPerson }}>
+      {children}
+    </PersonContext.Provider>
   );
 };

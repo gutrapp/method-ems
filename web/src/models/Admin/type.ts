@@ -4,13 +4,13 @@ type Admin = {
   last_name: string;
   email: string;
   password: string;
-  role: "AD" | "OP";
+  role?: "AD" | "OP";
 } & (
   | {
-      type: "CL";
-      clinic: Clinic;
+      type?: "CL";
+      clinic?: Clinic;
     }
   | {
-      type: "GL";
+      type?: "GL";
     }
 );

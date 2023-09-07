@@ -1,25 +1,21 @@
-import { JSXElement, createContext, createSignal } from "solid-js";
+import React, { createContext, useState } from "react";
 
-const adminInitialState: Admin = {
+type AdminContextProviderProps = {
+  children: React.ReactNode;
+};
+
+export const adminInitialState: Admin = {
   id: 0,
   first_name: "",
   last_name: "",
   email: "",
   password: "",
-  type: "GL",
-  role: "AD",
 };
 
-type AdminContextProps = {
+export const AdminContext = createContext<{
   admin: Admin;
-  setAdmin: (admin: Admin) => void;
-};
-
-type AdminContextProviderProps = {
-  children: JSXElement;
-};
-
-export const AdminContext = createContext<AdminContextProps>({
+  setAdmin: React.Dispatch<React.SetStateAction<Admin>>;
+}>({
   admin: adminInitialState,
   setAdmin: () => {},
 });
@@ -27,15 +23,11 @@ export const AdminContext = createContext<AdminContextProps>({
 export const AdminContextProvider = ({
   children,
 }: AdminContextProviderProps) => {
-  const [admin, setAdmin] = createSignal<Admin>(adminInitialState);
-  const context = {
-    admin: admin(),
-    setAdmin(admin: Admin) {
-      setAdmin(admin);
-    },
-  };
+  const [admin, setAdmin] = useState<Admin>(adminInitialState);
 
   return (
-    <AdminContext.Provider value={context}>{children}</AdminContext.Provider>
+    <AdminContext.Provider value={{ admin, setAdmin }}>
+      {children}
+    </AdminContext.Provider>
   );
 };

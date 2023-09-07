@@ -1,8 +1,7 @@
-import { JSX, lazy } from "solid-js";
-
+import { lazy } from "react";
 import Home from "../pages/Home";
 import Login from "../pages/Login";
-import Admin from "../pages/Admin";
+const Admin = lazy(() => import("../pages/Admin"));
 const Dashboard = lazy(() => import("../pages/Dashboard"));
 const Test = lazy(() => import("../pages/Dashboard/Test"));
 const Tests = lazy(() => import("../pages/Tests"));
@@ -27,12 +26,7 @@ const ClinicPerson = lazy(
 );
 const ClinicTest = lazy(() => import("../pages/Admin/Clinic/Dashboard/Test"));
 
-type Route = {
-  path: string;
-  element: JSX.Element;
-};
-
-export const PRIVATE_ROUTES: Route[] = [
+export const PRIVATE_ROUTES = [
   { path: "/admin/global", element: <Global /> },
   { path: "/admin/global/dashboard", element: <GlobalDashboard /> },
   { path: "/admin/global/dashboard/test", element: <GlobalTest /> },
@@ -49,7 +43,7 @@ export const PRIVATE_ROUTES: Route[] = [
   { path: "/admin/clinic/:id/dashboard/person/:person_id", element: <></> },
 ];
 
-export const PUBLIC_ROUTES: Route[] = [
+export const PUBLIC_ROUTES = [
   { path: "/", element: <Home /> },
   { path: "/admin", element: <Admin /> },
   { path: "/login", element: <Login /> },

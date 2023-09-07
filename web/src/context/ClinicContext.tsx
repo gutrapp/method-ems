@@ -1,20 +1,18 @@
-import { JSXElement, createContext, createSignal } from "solid-js";
+import React, { createContext, useState } from "react";
 
-const clinicInitialState: Clinic = {
+type ClinicContextProviderProps = {
+  children: React.ReactNode;
+};
+
+export const clinicInitialState: Clinic = {
   id: 0,
   nome: "",
 };
 
-type ClinicContextProps = {
+export const ClinicContext = createContext<{
   clinic: Clinic;
-  setClinic: (clinic: Clinic) => void;
-};
-
-type ClinicContextProviderProps = {
-  children: JSXElement;
-};
-
-export const ClinicContext = createContext<ClinicContextProps>({
+  setClinic: React.Dispatch<React.SetStateAction<Clinic>>;
+}>({
   clinic: clinicInitialState,
   setClinic: () => {},
 });
@@ -22,15 +20,11 @@ export const ClinicContext = createContext<ClinicContextProps>({
 export const ClinicContextProvider = ({
   children,
 }: ClinicContextProviderProps) => {
-  const [clinic, setClinic] = createSignal<Clinic>(clinicInitialState);
-  const context = {
-    clinic: clinic(),
-    setClinic(clinic: Clinic) {
-      setClinic(clinic);
-    },
-  };
+  const [clinic, setClinic] = useState<Clinic>(clinicInitialState);
 
   return (
-    <ClinicContext.Provider value={context}>{children}</ClinicContext.Provider>
+    <ClinicContext.Provider value={{ clinic, setClinic }}>
+      {children}
+    </ClinicContext.Provider>
   );
 };
