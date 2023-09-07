@@ -1,3 +1,4 @@
+from datetime import datetime, timedelta
 from django.db import models
 
 from person.models import Person
@@ -16,7 +17,10 @@ class Result(models.Model):
     ]
 
     person = models.ForeignKey(Person, on_delete=models.CASCADE)
-    testTaken = models.BooleanField()
+    expired = models.BooleanField(default=False)
+    testTaken = models.BooleanField(default=False)
     test = models.CharField(choices=TESTS, max_length=2)
     key = models.CharField(max_length=50, unique=True)
     seen = models.BooleanField(default=False)
+    created_at = models.DateField(auto_now_add=True, null=True, blank=True)
+    expires_at = models.DateField(default=datetime.now() + timedelta(days=30), null=True, blank=True)

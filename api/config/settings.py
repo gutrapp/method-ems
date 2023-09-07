@@ -18,9 +18,9 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "rest_framework",
+    "account",
     "person",
     "clinic",
-    "account",
     "result",
     "tests",
 ]
@@ -82,7 +82,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-AUTH_USER_MODEL = "account.Admin"
+AUTH_USER_MODEL = "account.User"
 
 LANGUAGE_CODE = "en-us"
 
