@@ -12,4 +12,6 @@ class ResultViews(viewsets.ModelViewSet):
     serializer_class = ResultSerializer
     filterset_class = ResultFilter
     filter_backends = [DjangoFilterBackend, OrderingFilter]
-    ordering_fields = ['created_at']
+    ordering_fields = '__all__'
+    ordering = ['id']
+

@@ -12,7 +12,9 @@ class LifeViews(viewsets.ModelViewSet):
     serializer_class = LifeSerializer
     filterset_class = LifeFilter
     filter_backends = [DjangoFilterBackend, OrderingFilter]
-    ordering_fields = ['total', 'average']
+    ordering_fields = '__all__'
+    ordering = ['id']
+
 
 
 class MbtiViews(viewsets.ModelViewSet):
@@ -20,12 +22,9 @@ class MbtiViews(viewsets.ModelViewSet):
     serializer_class = MbtiSerializer
     filterset_class = MbtiFilter
     filter_backends = [DjangoFilterBackend, OrderingFilter]
-    ordering_fields = [
-        'firstScore',
-        'secondScore',
-        'thirdScore',
-        'fourthScore',
-    ]
+    ordering_fields = '__all__'
+    ordering = ['id']
+
 
 
 class LoveLanguageViews(viewsets.ModelViewSet):
@@ -33,12 +32,9 @@ class LoveLanguageViews(viewsets.ModelViewSet):
     serializer_class = LoveLanguageSerializer
     filterset_class = LoveLanguageFilter
     filter_backends = [DjangoFilterBackend, OrderingFilter]
-    ordering_fields = [
-        'firstScore',
-        'secondScore',
-        'thirdScore',
-        'fourthScore',
-    ]
+    ordering_fields = '__all__'
+    ordering = ['id']
+
 
 
 class SelfKnowledgeViews(viewsets.ModelViewSet):
@@ -46,9 +42,5 @@ class SelfKnowledgeViews(viewsets.ModelViewSet):
     serializer_class = SelfKnowledgeSerializer
     filterset_class = SelfKnowledgeFilter
     filter_backends = [DjangoFilterBackend, OrderingFilter]
-    ordering_fields = [
-        'firstScore',
-        'secondScore',
-        'thirdScore',
-        'fourthScore',
-    ]
+    ordering_fields = '__all__'
+    ordering = ['id']

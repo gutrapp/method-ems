@@ -1,4 +1,3 @@
-from django.shortcuts import render
 from django.contrib.auth import authenticate, login, logout
 from django.views.decorators.csrf import ensure_csrf_cookie, csrf_protect
 from django.utils.decorators import method_decorator
@@ -6,7 +5,7 @@ from rest_framework.response import Response
 from rest_framework import status, permissions
 from rest_framework.views import APIView
 
-from .models import Admin
+from .models import User
 from .serializers import AdminSerializer
 
 
@@ -14,7 +13,7 @@ from .serializers import AdminSerializer
 class GetCSRFToken(APIView):
     permission_classes = (permissions.AllowAny,)
 
-    def get():
+    def get(self, request, format=None):
         """Sets CSRF cookie"""
 
         return Response(status=status.HTTP_200_OK)
@@ -27,16 +26,17 @@ class Login(APIView):
     def post(self, request, format=None):
         """Login"""
 
-        email = self.request.data["email"]
-        password = self.request.data["password"]
+        email = request.data["email"]
+        password = request.data["password"]
 
         try:
-            user = authenticate(self.request, email=email, password=password)
+            user = authenticate(request, email=email, password=password)
             if user is not None:
-                login(self.request, user)
+                login(request, user)
                 return Response(status=status.HTTP_200_OK)
         except:
             return Response(status=status.HTTP_401_UNAUTHORIZED)
+        return Response(status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 
 @method_decorator(csrf_protect, name="dispatch")
@@ -45,7 +45,7 @@ class Logout(APIView):
         """Logout"""
 
         try:
-            logout(self.request)
+            logout(request)
             return Response(status=status.HTTP_200_OK)
         except:
             return Response(status=status.HTTP_500_INTERNAL_SERVER_ERROR)
@@ -57,9 +57,9 @@ class UseSession(APIView):
         """Fetches the data on the current user logged in"""
 
         try:
-            if not Admin.is_authenticated:
+            if not User.is_authenticated:
                 return Response(status=status.HTTP_401_UNAUTHORIZED)
-            serializer = AdminSerializer(data=request.user)
+            serializer = AdminSerializer(data=request.user.admin)
             return Response({"admin": serializer.data}, status=status.HTTP_200_OK)
         except:
             return Response(status=status.HTTP_500_INTERNAL_SERVER_ERROR)

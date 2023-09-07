@@ -12,4 +12,5 @@ class PersonViews(viewsets.ModelViewSet):
     serializer_class = PersonSerializer
     filterset_class = PersonFilter
     filter_backends = [DjangoFilterBackend, OrderingFilter]
-    ordering_fields = ['age']
+    ordering_fields = '__all__'   
+    ordering = ['id']
