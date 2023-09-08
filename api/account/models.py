@@ -16,10 +16,10 @@ class User(AbstractBaseUser, PermissionsMixin):
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
     email = models.CharField(max_length=100, unique=True)
-    password = models.CharField(max_length=50)
+    password = models.CharField(max_length=255)
     type = models.CharField(max_length=1, choices=ROLE_CHOICES)
     is_staff = models.BooleanField(default=False)
-    is_active = models.BooleanField(default=False)
+    is_active = models.BooleanField(default=True)
 
     USERNAME_FIELD = 'email'
 
@@ -44,5 +44,5 @@ class Admin(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     group = models.CharField(max_length=2, choices=GROUP_CHOICES)
     role = models.CharField(max_length=2, choices=ROLE_CHOICES)
-    clinic = models.ManyToManyField(Clinic)
+    clinic = models.ManyToManyField(Clinic, blank=True)
     
