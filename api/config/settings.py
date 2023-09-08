@@ -1,3 +1,4 @@
+import os
 from decouple import config
 from pathlib import Path
 
@@ -6,9 +7,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = config("DJANGO_SECRET")
 
-DEBUG = True
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
-ALLOWED_HOSTS = []
+DEBUG=True
+
+ALLOWED_HOSTS = ["*"]
 
 INSTALLED_APPS = [
     "django.contrib.admin",

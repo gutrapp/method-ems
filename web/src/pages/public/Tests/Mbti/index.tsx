@@ -1,3 +1,5 @@
-export const Life = () => {
-  return <main>Life</main>;
+const Mbti = () => {
+  return <main>Mbti</main>;
 };
+
+export default Mbti;

@@ -1,3 +1,5 @@
-export const TestId = () => {
+const TestId = () => {
   return <main>TestId</main>;
 };
+
+export default TestId;

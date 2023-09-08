@@ -1,8 +1,7 @@
 import axios from "axios";
-import { env } from "../helper/env.helper";
 
 const api = axios.create({
-  baseURL: env.API_URL,
+  baseURL: "http://localhost:8000/api/",
 });
 
 api.defaults.xsrfCookieName = "csrftoken";

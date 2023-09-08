@@ -1,3 +1,5 @@
-export const Global = () => {
+const Global = () => {
   return <main>Global</main>;
 };
+
+export default Global;

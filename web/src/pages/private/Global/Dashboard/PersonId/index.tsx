@@ -1,3 +1,5 @@
-export const GlobalPersonId = () => {
+const GlobalPersonId = () => {
   return <main>GlobalPersonId</main>;
 };
+
+export default GlobalPersonId;

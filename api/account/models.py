@@ -17,7 +17,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     last_name = models.CharField(max_length=50)
     email = models.CharField(max_length=100, unique=True)
     password = models.CharField(max_length=50)
-    role = models.CharField(max_length=1, choices=ROLE_CHOICES)
+    type = models.CharField(max_length=1, choices=ROLE_CHOICES)
     is_staff = models.BooleanField(default=False)
     is_active = models.BooleanField(default=False)
 
@@ -25,11 +25,11 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     objects = UserManager()
 
-
+    
 class Admin(models.Model):
     GLOBAL = "G"
     CLINIC = "C"
-    TYPE_CHOICES = [
+    GROUP_CHOICES = [
         (GLOBAL, "Global"),
         (CLINIC, "Clínica"),
     ]
@@ -42,7 +42,7 @@ class Admin(models.Model):
     ]
 
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    type = models.CharField(max_length=2, choices=TYPE_CHOICES)
+    group = models.CharField(max_length=2, choices=GROUP_CHOICES)
     role = models.CharField(max_length=2, choices=ROLE_CHOICES)
     clinic = models.ManyToManyField(Clinic)
     

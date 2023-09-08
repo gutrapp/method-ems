@@ -1,3 +1,5 @@
-export const GlobalClinicId = () => {
+const GlobalClinicId = () => {
   return <main>GlobalClinicId</main>;
 };
+
+export default GlobalClinicId;

@@ -1,3 +1,5 @@
-export const ClinicTestId = () => {
+const ClinicTestId = () => {
   return <main>ClinicTestId</main>;
 };
+
+export default ClinicTestId;
