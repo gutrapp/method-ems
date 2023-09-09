@@ -5,7 +5,7 @@ from .models import Result
 
 class ResultFilter(filters.FilterSet):
     testTaken = filters.BooleanFilter()
-    test = filters.ChoiceFilter(choiches=Result.TESTS)
+    test = filters.ChoiceFilter(choices=Result.TESTS)
     key = filters.CharFilter()
     seen = filters.BooleanFilter()
 

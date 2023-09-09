@@ -15,11 +15,7 @@ export const Phrases = () => {
             <strong className="text-[#bfa15e] xl:text-[62px] pl-[2px] xl:pl-2">
               futuro
             </strong>
-            ,
-            <strong className="text-[#bfa15e] xl:text-[62px] pl-[2px] xl:pl-2">
-              literalmente
-            </strong>
-            ,
+            , literalmente,
           </h1>
           <h1 className="flex">
             destroem sua

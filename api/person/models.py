@@ -12,9 +12,9 @@ class Person(models.Model):
         (FEMALE, "Feminino"),
     ]
     
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, blank=True)
     cpf = models.CharField(max_length=12, unique=True)
     age = models.IntegerField()
     sex = models.CharField(max_length=2, choices=SEX_CHOICES)
-    address = models.ManyToManyField(Address)
-    cellphone = models.ManyToManyField(Cellphone)
+    address = models.ManyToManyField(Address, blank=True)
+    cellphone = models.ManyToManyField(Cellphone, blank=True)

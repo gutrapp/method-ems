@@ -1,10 +1,10 @@
 import { Home } from "../pages/public/Home";
 import { Login } from "../pages/public/Auth/Login";
+import { Register } from "../pages/public/Auth/Register";
 import { Admin } from "../pages/public/Auth/Admin";
 import { lazy } from "react";
 import { Layout } from "../components/Layout";
 
-const Dashboard = lazy(() => import("../pages/public/Dashboard"));
 const Profile = lazy(() => import("../pages/public/Dashboard/Profile"));
 const Test = lazy(() => import("../pages/public/Dashboard/Test"));
 const TestId = lazy(() => import("../pages/public/Dashboard/TestId"));
@@ -15,7 +15,6 @@ const SelfKnowledge = lazy(() => import("../pages/public/Tests"));
 const LoveLanguage = lazy(() => import("../pages/public/Tests"));
 
 const Global = lazy(() => import("../pages/private/Global"));
-const GlobalDashboard = lazy(() => import("../pages/private/Global/Dashboard"));
 const GlobalClinic = lazy(
   () => import("../pages/private/Global/Dashboard/Clinic")
 );
@@ -33,7 +32,6 @@ const GlobalTestId = lazy(
   () => import("../pages/private/Global/Dashboard/TestId")
 );
 const Clinic = lazy(() => import("../pages/private/Clinic"));
-const ClinicDashboard = lazy(() => import("../pages/private/Clinic/Dashboard"));
 const ClinicPerson = lazy(
   () => import("../pages/private/Clinic/Dashboard/Person")
 );
@@ -55,15 +53,8 @@ export const PUBLIC_ROUTES = [
     ),
   },
   { path: "/login", element: <Login /> },
+  { path: "/register", element: <Register /> },
   { path: "/admin", element: <Admin /> },
-  {
-    path: "/dashboard",
-    element: (
-      <Layout>
-        <Dashboard />
-      </Layout>
-    ),
-  },
   {
     path: "/dashboard/profile",
     element: (
@@ -97,7 +88,7 @@ export const PUBLIC_ROUTES = [
     ),
   },
   {
-    path: "/tests/mbti",
+    path: "/tests/result/:id/mbti",
     element: (
       <Layout>
         <Mbti />
@@ -105,7 +96,7 @@ export const PUBLIC_ROUTES = [
     ),
   },
   {
-    path: "/tests/life",
+    path: "/tests/result/:id/life",
     element: (
       <Layout>
         <Life />
@@ -113,7 +104,7 @@ export const PUBLIC_ROUTES = [
     ),
   },
   {
-    path: "/tests/selfknowledge",
+    path: "/tests/result/:id/selfknowledge",
     element: (
       <Layout>
         <SelfKnowledge />
@@ -121,7 +112,7 @@ export const PUBLIC_ROUTES = [
     ),
   },
   {
-    path: "/tests/lovelanguage",
+    path: "/tests/result/:id/lovelanguage",
     element: (
       <Layout>
         <LoveLanguage />
@@ -132,7 +123,6 @@ export const PUBLIC_ROUTES = [
 
 export const PRIVATE_ROUTES = [
   { path: "/admin/global", element: <Global /> },
-  { path: "/admin/global/dashboard", element: <GlobalDashboard /> },
   { path: "/admin/global/dashboard/test", element: <GlobalTest /> },
   { path: "/admin/global/dashboard/person", element: <GlobalPerson /> },
   { path: "/admin/global/dashboard/clinic", element: <GlobalClinic /> },
@@ -140,7 +130,6 @@ export const PRIVATE_ROUTES = [
   { path: "/admin/global/dashboard/person/:id", element: <GlobalPersonId /> },
   { path: "/admin/global/dashboard/clinic/:id", element: <GlobalClinicId /> },
   { path: "/admin/clinic", element: <Clinic /> },
-  { path: "/admin/clinic/:id/dashboard", element: <ClinicDashboard /> },
   { path: "/admin/clinic/:id/dashboard/test", element: <ClinicTest /> },
   { path: "/admin/clinic/:id/dashboard/person", element: <ClinicPerson /> },
   {

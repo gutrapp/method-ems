@@ -89,7 +89,6 @@ class Cellphone(models.Model):
         (MOBILE, "Celular"),
     ] 
 
-
     ddd = models.CharField(max_length=2)
     telefone = models.CharField(max_length=9)
     type = models.CharField(max_length=2, choices=TYPE_CHOICES)

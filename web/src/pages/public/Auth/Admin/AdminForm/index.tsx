@@ -1,18 +1,18 @@
 import { MdEmail, MdPassword } from "react-icons/md";
 import { Input } from "../../../../../components/Input";
 import { ChangeEvent, useState } from "react";
-import api from "../../../../../api/api";
 import { useNavigate } from "react-router-dom";
+import api from "../../../../../api/api";
 
-type LoginData = {
+type LoginAdminData = {
   email: string;
   password: string;
 };
 
-export const LoginForm = () => {
+export const LoginAdminForm = () => {
   const router = useNavigate();
 
-  const [data, setData] = useState<LoginData>({
+  const [data, setData] = useState<LoginAdminData>({
     email: "",
     password: "",
   });
@@ -24,8 +24,7 @@ export const LoginForm = () => {
       .get("auth/csrf")
       .then(() =>
         api.post("auth/login", data).then((response) => console.log(response))
-      )
-      .then(() => router("/dashboard/test"));
+      );
   };
 
   return (

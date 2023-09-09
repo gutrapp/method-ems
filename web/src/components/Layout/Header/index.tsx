@@ -1,14 +1,21 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 import { NavItem } from "./NavItem";
 import { AuthNavItems } from "./AuthNavItems";
 
 export const Header = () => {
+  const { pathname } = useLocation();
+
   const [trigger, setTrigger] = useState<boolean>(false);
+  const [fixed, setFixed] = useState<boolean>(false);
 
   const handleTrigger = () => {
     setTrigger(window.scrollY >= 95);
   };
+
+  useEffect(() => {
+    if (pathname !== "/") setFixed(true);
+  }, []);
 
   window.addEventListener("scroll", handleTrigger);
 
@@ -16,6 +23,8 @@ export const Header = () => {
     <header
       className={
         trigger
+          ? "font-headers bg-[#1e2123] text-lg font-bold w-full hidden lg:flex lg:fixed text-white opacity-75 shadow-2xl duration-500"
+          : fixed
           ? "font-headers bg-[#1e2123] text-lg font-bold w-full hidden lg:flex lg:fixed text-white opacity-75 shadow-2xl duration-500"
           : "font-headers pt-[56px] text-lg w-full hidden lg:flex lg:fixed font-bold text-white duration-500"
       }

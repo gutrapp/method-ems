@@ -6,7 +6,7 @@ from rest_framework import status, permissions
 from rest_framework.views import APIView
 
 from .models import User
-from .serializers import AdminSerializer
+from .serializers import AdminSerializer, UserSerializer
 
 
 @method_decorator(ensure_csrf_cookie, name="dispatch")
@@ -34,9 +34,9 @@ class Login(APIView):
             if user is not None:
                 login(request, user)
                 return Response(status=status.HTTP_200_OK)
-        except:
             return Response(status=status.HTTP_401_UNAUTHORIZED)
-        return Response(status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+        except:
+            return Response(status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 
 @method_decorator(csrf_protect, name="dispatch")

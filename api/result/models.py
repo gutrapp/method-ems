@@ -2,6 +2,7 @@ from datetime import datetime, timedelta
 from django.db import models
 
 from person.models import Person
+from clinic.models import Clinic
 
 
 class Result(models.Model):
@@ -22,5 +23,6 @@ class Result(models.Model):
     test = models.CharField(choices=TESTS, max_length=2)
     key = models.CharField(max_length=50, unique=True)
     seen = models.BooleanField(default=False)
+    clinic = models.ForeignKey(Clinic, on_delete=models.CASCADE)
     created_at = models.DateField(auto_now_add=True, null=True, blank=True)
     expires_at = models.DateField(default=datetime.now() + timedelta(days=30), null=True, blank=True)
