@@ -4,10 +4,10 @@ from .models import Mbti, Life, SelfKnowledge, LoveLanguage
 
 
 class MbtiFilter(filters.FilterSet):
-    first = filters.ChoiceFilter(choiches=Mbti.PERSONALITIES)
-    second = filters.ChoiceFilter(choiches=Mbti.PERSONALITIES)
-    third = filters.ChoiceFilter(choiches=Mbti.PERSONALITIES)
-    fourth = filters.ChoiceFilter(choiches=Mbti.PERSONALITIES)
+    first = filters.ChoiceFilter(choices=Mbti.PERSONALITIES)
+    second = filters.ChoiceFilter(choices=Mbti.PERSONALITIES)
+    third = filters.ChoiceFilter(choices=Mbti.PERSONALITIES)
+    fourth = filters.ChoiceFilter(choices=Mbti.PERSONALITIES)
     firstScore = filters.NumberFilter()
     secondScore = filters.NumberFilter()
     thirdScore = filters.NumberFilter()
@@ -28,10 +28,10 @@ class MbtiFilter(filters.FilterSet):
 
 
 class SelfKnowledgeFilter(filters.FilterSet):
-    first = filters.ChoiceFilter(choiches=SelfKnowledge.TRAITS)
-    second = filters.ChoiceFilter(choiches=SelfKnowledge.TRAITS)
-    third = filters.ChoiceFilter(choiches=SelfKnowledge.TRAITS)
-    fourth = filters.ChoiceFilter(choiches=SelfKnowledge.TRAITS)
+    first = filters.ChoiceFilter(choices=SelfKnowledge.TRAITS)
+    second = filters.ChoiceFilter(choices=SelfKnowledge.TRAITS)
+    third = filters.ChoiceFilter(choices=SelfKnowledge.TRAITS)
+    fourth = filters.ChoiceFilter(choices=SelfKnowledge.TRAITS)
     firstScore = filters.NumberFilter()
     secondScore = filters.NumberFilter()
     thirdScore = filters.NumberFilter()
@@ -52,11 +52,11 @@ class SelfKnowledgeFilter(filters.FilterSet):
 
 
 class LoveLanguageFilter(filters.FilterSet):
-    first = filters.ChoiceFilter(choiches=LoveLanguage.PREFERENCES)
-    second = filters.ChoiceFilter(choiches=LoveLanguage.PREFERENCES)
-    third = filters.ChoiceFilter(choiches=LoveLanguage.PREFERENCES)
-    fourth = filters.ChoiceFilter(choiches=LoveLanguage.PREFERENCES)
-    fifth = filters.ChoiceFilter(choiches=LoveLanguage.PREFERENCES)
+    first = filters.ChoiceFilter(choices=LoveLanguage.PREFERENCES)
+    second = filters.ChoiceFilter(choices=LoveLanguage.PREFERENCES)
+    third = filters.ChoiceFilter(choices=LoveLanguage.PREFERENCES)
+    fourth = filters.ChoiceFilter(choices=LoveLanguage.PREFERENCES)
+    fifth = filters.ChoiceFilter(choices=LoveLanguage.PREFERENCES)
     firstScore = filters.NumberFilter()
     secondScore = filters.NumberFilter()
     thirdScore = filters.NumberFilter()

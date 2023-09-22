@@ -7,7 +7,7 @@ export const NavItem = ({ href, content, ...props }: NavItemProps) => {
   return (
     <a href={href}>
       <button
-        className="mr-[42px] duration-300 hover:cursor-pointer hover:text-[#bfa15e]"
+        className="mr-[27px] duration-300 hover:cursor-pointer hover:text-[#bfa15e]"
         {...props}
       >
         {content}

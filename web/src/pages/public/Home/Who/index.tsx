@@ -10,14 +10,14 @@ export const Who = () => {
             QUEM SOU
           </h1>
           <text className="text-white text-[12px] px-[10px] xl:text-xl text-center font-light xl:font-extralight">
-            Empresário, especialista em gestão comercial com mais de 14 anos de
+            Empresário, especialista em franchising com mais de 15 anos de
             experiência em treinamento e desenvolvimento humano, que resultam em
-            mais de 10 mil profissionais e empreendedores transformados, em 230
-            cidades ao redor do mundo. Psicanalista com especialização em
-            análise de comportamento humano, Master Coach, Master Trainer em
-            Inteligência Emocional, e Master Instructor Neurolinguística. Autor
-            de dezenas de metodologias e campanhas psicodinâmicas para uso em
-            ambiente de negócios.
+            mais de 12 mil profissionais da saúde e empreendedores já treinados,
+            em mais de 230 cidades ao redor do mundo. Psicanalista com
+            especialização em análise de comportamento humano, Master Coach,
+            Master Trainer em Inteligência Emocional, e Master Instructor
+            Neurolinguística. Autor de dezenas de metodologias e campanhas
+            psicodinâmicas para uso em ambientes clínicos de saúde.
           </text>
         </div>
       </div>

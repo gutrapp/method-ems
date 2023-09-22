@@ -5,6 +5,7 @@ import { Address } from "../../../../../models/address";
 import { Cellphone } from "../../../../../models/cellphone";
 import { Select } from "../../../../../components/Select";
 import api from "../../../../../api/api";
+import { useNavigate } from "react-router-dom";
 
 type States =
   | "SC"
@@ -110,6 +111,8 @@ type RegisterUser = {
 };
 
 export const RegisterForm = () => {
+  const router = useNavigate();
+
   const [user, setUser] = useState<RegisterUser>({
     first_name: "",
     last_name: "",
@@ -142,29 +145,33 @@ export const RegisterForm = () => {
 
   const handleRegister = async () => {
     await api.get("auth/csrf").then(() =>
-      api.post("auth/register/person", {
-        cellphone: { ...cellphone },
-        address: { ...address },
-        user: { ...user },
-        person: { ...person },
-      })
+      api
+        .post("auth/register/person", {
+          cellphone: { ...cellphone },
+          address: { ...address },
+          user: { ...user },
+          person: { ...person },
+        })
+        .then((response) => {
+          if (response.status === 200) router("/login");
+        })
     );
   };
 
   return (
     <div className="bg-gradient-to-b from-[#0f172a] flex flex-col justify-center items-center to-black w-full h-full">
-      <h1 className="text-[#bfa15e] xl:mb-8 text-5xl font-bold font-headers">
+      <h1 className="text-[#bfa15e] xl:mt-16 xl:mb-8 text-4xl font-bold font-headers">
         REGISTRE-SE
       </h1>
       <form
-        className="flex xl:text-xl flex-col justify-center items-center gap-y-6 xl:px-20 xl:py-10 bg-[#0f172a] xl:gap-x-10 rounded-xl shadow-2xl ring-1 ring-[#1e1e1e]"
+        className="flex xl:text-lg flex-col xl:mb-20 justify-center items-center gap-y-6 xl:px-20 xl:py-10 bg-[#0f172a] xl:gap-x-10 rounded-xl shadow-2xl ring-1 ring-[#1e1e1e]"
         onSubmit={(e) => {
           e.preventDefault();
           handleRegister();
         }}
       >
         <div className="xl:grid xl:grid-cols-2 gap-x-10">
-          <div className="flex flex-col text-white font-semibold">
+          <div className="flex flex-col text-white font-semibold w-[500px]">
             <h1 className="text-2xl pb-4">Informações Gerais:</h1>
             <div className="grid grid-cols-2 gap-x-2">
               <Input
@@ -205,7 +212,7 @@ export const RegisterForm = () => {
               onChange={(e: ChangeEvent<HTMLInputElement>) =>
                 setPerson({ ...person, cpf: e.target.value })
               }
-              placeholder="Coloque sua senha aqui..."
+              placeholder="Coloque seu cpf aqui..."
               type="text"
             />
             <div className="grid grid-cols-2 gap-x-2 items-center">
@@ -216,7 +223,7 @@ export const RegisterForm = () => {
                 onChange={(e: ChangeEvent<HTMLInputElement>) =>
                   setPerson({ ...person, age: parseInt(e.target.value) })
                 }
-                placeholder="Rodrigo"
+                placeholder="Idade"
                 type="text"
               />
               <div className="mt-5 ml-32">
@@ -236,27 +243,15 @@ export const RegisterForm = () => {
               onChange={(e: ChangeEvent<HTMLInputElement>) =>
                 setUser({ ...user, password: e.target.value })
               }
-              placeholder="Coloque sua senha aqui..."
+              placeholder="Crie sua senha..."
               type="text"
             />
           </div>
 
-          <div className="flex flex-col text-white font-semibold border-r-2 border-[#0f172a] w-full">
+          <div className="flex flex-col text-white font-semibold border-r-2 border-[#0f172a] w-[500px]">
             <h1 className="text-2xl pb-4">Endereço:</h1>
             <div className="flex gap-x-2">
-              <div className="w-[100px]">
-                <Input
-                  Icon={MdEmail}
-                  label="Número"
-                  value={address.number || 0}
-                  onChange={(e: ChangeEvent<HTMLInputElement>) =>
-                    setAddress({ ...address, number: parseInt(e.target.value) })
-                  }
-                  placeholder="Rodrigo"
-                  type="text"
-                />
-              </div>
-              <div className="flex flex-col w-full">
+              <div className="flex flex-row justify-between w-full">
                 <Input
                   Icon={MdEmail}
                   label="Rua"
@@ -264,22 +259,27 @@ export const RegisterForm = () => {
                   onChange={(e: ChangeEvent<HTMLInputElement>) =>
                     setAddress({ ...address, street: e.target.value })
                   }
-                  placeholder="Afonso"
+                  placeholder="Sua rua aqui..."
                   type="text"
                 />
+                <div className="w-[100px]">
+                  <Input
+                    Icon={MdEmail}
+                    label="Número"
+                    value={address.number || 0}
+                    onChange={(e: ChangeEvent<HTMLInputElement>) =>
+                      setAddress({
+                        ...address,
+                        number: parseInt(e.target.value),
+                      })
+                    }
+                    placeholder="Número..."
+                    type="text"
+                  />
+                </div>
               </div>
             </div>
             <div className="grid grid-cols-2 justify-between gap-x-2">
-              <Input
-                Icon={MdEmail}
-                label="Cidade"
-                value={address.city}
-                onChange={(e: ChangeEvent<HTMLInputElement>) =>
-                  setAddress({ ...address, city: e.target.value })
-                }
-                placeholder="Rodrigo"
-                type="text"
-              />
               <Input
                 Icon={MdEmail}
                 label="Bairro"
@@ -287,7 +287,17 @@ export const RegisterForm = () => {
                 onChange={(e: ChangeEvent<HTMLInputElement>) =>
                   setAddress({ ...address, neighboorhood: e.target.value })
                 }
-                placeholder="Afonso"
+                placeholder="Seu bairro"
+                type="text"
+              />
+              <Input
+                Icon={MdEmail}
+                label="Cidade"
+                value={address.city}
+                onChange={(e: ChangeEvent<HTMLInputElement>) =>
+                  setAddress({ ...address, city: e.target.value })
+                }
+                placeholder="Cidade..."
                 type="text"
               />
             </div>
@@ -298,7 +308,7 @@ export const RegisterForm = () => {
               onChange={(e: ChangeEvent<HTMLInputElement>) =>
                 setAddress({ ...address, cep: e.target.value })
               }
-              placeholder="Coloque seu email aqui..."
+              placeholder="Coloque seu CEP aqui..."
               type="text"
             />
             <div className="grid grid-cols-2 gap-x-2">
@@ -341,7 +351,7 @@ export const RegisterForm = () => {
                   onChange={(e: ChangeEvent<HTMLInputElement>) =>
                     setCellphone({ ...cellphone, ddd: e.target.value })
                   }
-                  placeholder="Rodrigo"
+                  placeholder="(47)"
                   type="text"
                 />
               </div>
@@ -352,7 +362,7 @@ export const RegisterForm = () => {
                 onChange={(e: ChangeEvent<HTMLInputElement>) =>
                   setCellphone({ ...cellphone, telefone: e.target.value })
                 }
-                placeholder="Afonso"
+                placeholder="Seu telefone..."
                 type="text"
               />
             </div>

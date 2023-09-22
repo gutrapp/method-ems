@@ -29,7 +29,7 @@ export const LoginForm = () => {
   };
 
   return (
-    <div className="bg-gradient-to-b from-[#0f172a] py-20 flex justify-center items-center to-black w-full h-full">
+    <div className="bg-gradient-to-b from-[#0f172a] flex justify-center items-center to-black w-full h-full">
       <form
         className="flex flex-col items-center justify-center bg-[#0f172a] rounded-xl shadow-2xl ring-1 ring-[#1e1e1e]"
         onSubmit={(e) => {

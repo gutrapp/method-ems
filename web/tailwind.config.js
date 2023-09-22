@@ -6,6 +6,7 @@ module.exports = {
       fontFamily: {
         sans: ["Helvetica Neue", "Helvetica", "Arial", "sans-serif"],
         headers: ["Oswald", "Arial", "Helvetica", "sans-serif"],
+        cursive: ["Thirsty Script"],
         serif: ["Georgia", "Cambria", "serif"],
         mono: ["Menlo", "Monaco", "Consolas", "monospace"],
       },

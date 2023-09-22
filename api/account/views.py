@@ -6,7 +6,21 @@ from rest_framework import status, permissions
 from rest_framework.views import APIView
 
 from .models import User
-from .serializers import AdminSerializer, UserSerializer
+from .serializers import AdminSerializer
+from clinic.serializers import ClinicSerializer
+from person.serializers import PersonSerializer
+
+
+class GetAdminClinic(APIView):
+    def get(self, request, format=None):
+        try:
+            admin = request.user.admin
+            if admin.group == "C":
+                serializer = ClinicSerializer(admin.clinic.all(), many=True)
+                return Response(data=serializer.data, status=status.HTTP_200_OK)
+            return Response(status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+        except:
+            return Response(status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 
 @method_decorator(ensure_csrf_cookie, name="dispatch")
@@ -33,7 +47,13 @@ class Login(APIView):
             user = authenticate(request, email=email, password=password)
             if user is not None:
                 login(request, user)
-                return Response(status=status.HTTP_200_OK)
+
+                if user.type == "A":
+                    return Response(
+                        data=AdminSerializer(user.admin).data, status=status.HTTP_200_OK
+                    )
+                else:
+                    return Response(status=status.HTTP_200_OK)
             return Response(status=status.HTTP_401_UNAUTHORIZED)
         except:
             return Response(status=status.HTTP_500_INTERNAL_SERVER_ERROR)
@@ -59,7 +79,10 @@ class UseSession(APIView):
         try:
             if not User.is_authenticated:
                 return Response(status=status.HTTP_401_UNAUTHORIZED)
-            serializer = AdminSerializer(data=request.user.admin)
-            return Response({"admin": serializer.data}, status=status.HTTP_200_OK)
+            if request.user.type == "A":
+                serializer = AdminSerializer(request.user.admin)
+            elif request.user.type == "P":
+                serializer = PersonSerializer(request.user.person)
+            return Response(serializer.data, status=status.HTTP_200_OK)
         except:
             return Response(status=status.HTTP_500_INTERNAL_SERVER_ERROR)

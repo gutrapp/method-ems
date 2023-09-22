@@ -7,7 +7,7 @@ type TestCardIconProps = {
 export const TestCardIcon = ({ Icon }: TestCardIconProps) => {
   return (
     <div className="mr-2">
-      <Icon size={190} />
+      <Icon size={175} />
     </div>
   );
 };

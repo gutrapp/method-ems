@@ -20,11 +20,15 @@ export const LoginAdminForm = () => {
   const [error, setError] = useState<string>("");
 
   const handleLogin = async () => {
-    await api
-      .get("auth/csrf")
-      .then(() =>
-        api.post("auth/login", data).then((response) => console.log(response))
-      );
+    await api.get("auth/csrf").then(() =>
+      api.post("auth/login", data).then((response) => {
+        const { group } = response.data;
+
+        if (group === "G") router("/admin/global");
+
+        if (group === "C") router("/admin/clinic");
+      })
+    );
   };
 
   return (

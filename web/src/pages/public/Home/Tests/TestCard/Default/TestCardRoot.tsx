@@ -9,7 +9,7 @@ type TestCardRootProps = {
 export const TestCardRoot = ({ children, route }: TestCardRootProps) => {
   return (
     <Link to={route}>
-      <div className="flex flex-row bg-black border-b border-[#bfa15e] justify-center items-center p-5 shadow-2xl ">
+      <div className="flex flex-row bg-black border-b border-[#bfa15e] justify-center items-center p-5 shadow-2xl w-full ">
         {children}
       </div>
     </Link>

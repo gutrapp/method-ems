@@ -2,7 +2,7 @@ import { RegisterForm } from "./RegisterForm";
 
 export const Register = () => {
   return (
-    <main className="h-screen flex justify-center items-center">
+    <main className="h-full flex justify-center items-center">
       <RegisterForm />
     </main>
   );

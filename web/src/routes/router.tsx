@@ -9,10 +9,10 @@ const Profile = lazy(() => import("../pages/public/Dashboard/Profile"));
 const Test = lazy(() => import("../pages/public/Dashboard/Test"));
 const TestId = lazy(() => import("../pages/public/Dashboard/TestId"));
 const Tests = lazy(() => import("../pages/public/Tests"));
-const Mbti = lazy(() => import("../pages/public/Tests"));
-const Life = lazy(() => import("../pages/public/Tests"));
-const SelfKnowledge = lazy(() => import("../pages/public/Tests"));
-const LoveLanguage = lazy(() => import("../pages/public/Tests"));
+const Mbti = lazy(() => import("../pages/public/Tests/Mbti"));
+const Life = lazy(() => import("../pages/public/Tests/Life"));
+const SelfKnowledge = lazy(() => import("../pages/public/Tests/SelfKnowledge"));
+const LoveLanguage = lazy(() => import("../pages/public/Tests/LoveLanguage"));
 
 const Global = lazy(() => import("../pages/private/Global"));
 const GlobalClinic = lazy(
@@ -31,7 +31,7 @@ const GlobalTest = lazy(() => import("../pages/private/Global/Dashboard/Test"));
 const GlobalTestId = lazy(
   () => import("../pages/private/Global/Dashboard/TestId")
 );
-const Clinic = lazy(() => import("../pages/private/Clinic"));
+const ClinicPage = lazy(() => import("../pages/private/Clinic"));
 const ClinicPerson = lazy(
   () => import("../pages/private/Clinic/Dashboard/Person")
 );
@@ -41,6 +41,9 @@ const ClinicPersonId = lazy(
 const ClinicTest = lazy(() => import("../pages/private/Clinic/Dashboard/Test"));
 const ClinicTestId = lazy(
   () => import("../pages/private/Clinic/Dashboard/TestId")
+);
+const ClinicResult = lazy(
+  () => import("../pages/private/Clinic/Dashboard/Result")
 );
 
 export const PUBLIC_ROUTES = [
@@ -88,7 +91,7 @@ export const PUBLIC_ROUTES = [
     ),
   },
   {
-    path: "/tests/result/:id/mbti",
+    path: "/tests/result/:id/four_elements",
     element: (
       <Layout>
         <Mbti />
@@ -129,9 +132,14 @@ export const PRIVATE_ROUTES = [
   { path: "/admin/global/dashboard/test/:id", element: <GlobalTestId /> },
   { path: "/admin/global/dashboard/person/:id", element: <GlobalPersonId /> },
   { path: "/admin/global/dashboard/clinic/:id", element: <GlobalClinicId /> },
-  { path: "/admin/clinic", element: <Clinic /> },
+  { path: "/admin/clinic", element: <ClinicPage /> },
   { path: "/admin/clinic/:id/dashboard/test", element: <ClinicTest /> },
   { path: "/admin/clinic/:id/dashboard/person", element: <ClinicPerson /> },
+  { path: "/admin/clinic/:id/dashboard/result", element: <ClinicResult /> },
+  {
+    path: "/admin/clinic/:id/dashboard/result/:result_id",
+    element: <ClinicPerson />,
+  },
   {
     path: "/admin/clinic/:id/dashboard/test/:test_id",
     element: <ClinicTestId />,

@@ -6,7 +6,7 @@ type TestCardContentProps = {
 
 export const TestCardContent = ({ children }: TestCardContentProps) => {
   return (
-    <text className="text-white font-extralight flex items-center">
+    <text className="text-white font-extralight mt-2 flex items-center">
       {children}
     </text>
   );

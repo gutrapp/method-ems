@@ -16,29 +16,30 @@ export const Method = () => {
         </h1>
         <div className="flex flex-col xl:flex-row xl:justify-around items-center xl:pt-[40px] pt-[8px] xl:pb-[80px] gap-x-[8px]">
           <MethodItem.Root>
-            <MethodItem.Title content="Objetivo" />
+            <MethodItem.Title content="Missão" />
             <MethodItem.Content>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas
-              imperdiet eu eros at mattis. Praesent porttitor nulla eu pulvinar
-              facilisis. Praesent at diam risus.
+              Ajudar as pessoas a equilibrar seus pensamentos e sentimentos
+              através do autoconhecimento pela Inteligência emocional
+              psicanalítica, resultando em mais felicidade e plenitude de seus
+              relacionamentos com o seu mundo interior e exterior.
             </MethodItem.Content>
           </MethodItem.Root>
 
           <MethodItem.Root>
-            <MethodItem.Title content="O que é?" />
+            <MethodItem.Title content="Visão" />
             <MethodItem.Content>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas
-              imperdiet eu eros at mattis. Praesent porttitor nulla eu pulvinar
-              facilisis. Praesent at diam risus.
+              Reconhecido como a pessoa que através de estudos científicos na
+              mente humana, conseguiu colocar em pratica e comprovar que ao
+              “tocar uma alma humana, basta ser uma alma humana”.
             </MethodItem.Content>
           </MethodItem.Root>
 
           <MethodItem.Root>
-            <MethodItem.Title content="Como funciona?" />
+            <MethodItem.Title content="Valores" />
             <MethodItem.Content>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas
-              imperdiet eu eros at mattis. Praesent porttitor nulla eu pulvinar
-              facilisis. Praesent at diam risus.
+              Ética, sustentabilidade, amor a Deus e ao próximo, lealdade,
+              equilíbrio, responsabilidade social, criatividade, transparência e
+              caridade.
             </MethodItem.Content>
           </MethodItem.Root>
         </div>

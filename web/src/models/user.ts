@@ -5,7 +5,7 @@ export type User = {
   email: string;
 } & (Person | Admin);
 
-type Person = {
+export type Person = {
   type: "P";
   cpf: string;
   age: number;
